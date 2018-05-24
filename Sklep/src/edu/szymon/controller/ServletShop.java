@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "/buy.jsp")
+@WebServlet("/buy")
 public class ServletShop extends HttpServlet {
 
     PriceCalculator priceCalculator = new PriceCalculator();
@@ -22,6 +22,8 @@ public class ServletShop extends HttpServlet {
     double sum;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
         products = new ArrayList<>();
 
         String product1 = request.getParameter("Product1");
@@ -33,7 +35,6 @@ public class ServletShop extends HttpServlet {
         double price2 = Double.valueOf(request.getParameter("cena2"));
         double price3 = Double.valueOf(request.getParameter("cena3"));
         double price4 = Double.valueOf(request.getParameter("cena4"));
-
         products.add(new Product(price1, product1));
         products.add(new Product(price2, product2));
         products.add(new Product(price3, product3));
@@ -42,17 +43,14 @@ public class ServletShop extends HttpServlet {
         mean = priceCalculator.mean(products);
         sum = priceCalculator.sum(products);
 
-        System.out.printf(String.valueOf(sum));
-
         request.setAttribute("products", products);
         request.setAttribute("sum", sum);
         request.setAttribute("mean", mean);
-        request.setAttribute("zzz",3);
         request.getRequestDispatcher("buy.jsp").forward(request, response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("nananana");
     }
 }
