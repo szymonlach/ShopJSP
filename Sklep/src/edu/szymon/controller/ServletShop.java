@@ -31,14 +31,22 @@ public class ServletShop extends HttpServlet {
         String product3 = request.getParameter("Product3");
         String product4 = request.getParameter("Product4");
 
-        double price1 = Double.valueOf(request.getParameter("cena1"));
-        double price2 = Double.valueOf(request.getParameter("cena2"));
-        double price3 = Double.valueOf(request.getParameter("cena3"));
-        double price4 = Double.valueOf(request.getParameter("cena4"));
-        products.add(new Product(price1, product1));
-        products.add(new Product(price2, product2));
-        products.add(new Product(price3, product3));
-        products.add(new Product(price4, product4));
+        String price1 = request.getParameter("cena1");
+        String price2 = request.getParameter("cena2");
+        String price3 = request.getParameter("cena3");
+        String price4 = request.getParameter("cena4");
+
+        String[] parameters = {price1,price2,price3,price4,product1,product2,product3,product4};
+        for(int i =0;i<parameters.length;i++){
+            if (parameters[i].isEmpty()){
+                request.getRequestDispatcher("empty.jsp").forward(request,response);
+            }
+        }
+
+        products.add(new Product(Double.valueOf(price1), product1));
+        products.add(new Product(Double.valueOf(price2), product2));
+        products.add(new Product(Double.valueOf(price3), product3));
+        products.add(new Product(Double.valueOf(price4), product4));
 
         mean = priceCalculator.mean(products);
         sum = priceCalculator.sum(products);

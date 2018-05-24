@@ -58,7 +58,7 @@
     </tbody>
 </table>
 <h2>Sum: <% out.print(sum);%>zl</h2><br>
-<h2>Mean: <% out.print(mean);%>zl</h2>
+<h2>Average price: <% out.print(mean);%>zl</h2>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
