@@ -36,17 +36,26 @@ public class ServletShop extends HttpServlet {
         String price3 = request.getParameter("cena3");
         String price4 = request.getParameter("cena4");
 
-        String[] parameters = {price1,price2,price3,price4,product1,product2,product3,product4};
-        for(int i =0;i<parameters.length;i++){
-            if (parameters[i].isEmpty()){
-                request.getRequestDispatcher("empty.jsp").forward(request,response);
+        String[] prices = {price1, price2, price3, price4};
+        String[] parameters = {product1, product2, product3, product4};
+        List<Integer> list = new ArrayList<>();
+
+        int k = 0;
+        for (int i = 0; i < parameters.length; i++) {
+            if (parameters[i].isEmpty()) {
+                k++;
+                if (k == 4) {
+                    request.getRequestDispatcher("empty.jsp").forward(request, response);
+                }
+            } else {
+                list.add(i);
             }
         }
 
-        products.add(new Product(Double.valueOf(price1), product1));
-        products.add(new Product(Double.valueOf(price2), product2));
-        products.add(new Product(Double.valueOf(price3), product3));
-        products.add(new Product(Double.valueOf(price4), product4));
+        for (Integer element : list) {
+            System.out.println(element);
+            products.add(new Product(Double.valueOf(prices[element]),parameters[element]));
+        }
 
         mean = priceCalculator.mean(products);
         sum = priceCalculator.sum(products);
@@ -55,10 +64,6 @@ public class ServletShop extends HttpServlet {
         request.setAttribute("sum", sum);
         request.setAttribute("mean", mean);
         request.getRequestDispatcher("buy.jsp").forward(request, response);
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("nananana");
     }
 }
+

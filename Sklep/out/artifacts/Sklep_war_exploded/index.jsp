@@ -28,7 +28,7 @@
     <input type="number" name="cena3" placeholder="Price"><br>
     <input type="text" name="Product4" placeholder="Product">
     <input type="number" name="cena4" placeholder="Price"><br>
-    <input type="submit" value="Kupuje">
+    <input type="submit" value="Buy">
 </form>
 
 <!-- Optional JavaScript -->
