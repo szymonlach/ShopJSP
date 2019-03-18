@@ -21,13 +21,13 @@
 <h2>Choose you products</h2>
 <form method="post" action="buy">
     <input type="text" name="Product1" placeholder="Product">
-    <input type="number" name="price1" placeholder="Price"><br>
+    <input type="number" name="cena1" placeholder="Price"><br>
     <input type="text" name="Product2" placeholder="Product">
-    <input type="number" name="price2" placeholder="Price"><br>
+    <input type="number" name="cena2" placeholder="Price"><br>
     <input type="text" name="Product3" placeholder="Product">
-    <input type="number" name="price3" placeholder="Price"><br>
+    <input type="number" name="cena3" placeholder="Price"><br>
     <input type="text" name="Product4" placeholder="Product">
-    <input type="number" name="price4" placeholder="Price"><br>
+    <input type="number" name="cena4" placeholder="Price"><br>
     <input type="submit" value="Buy">
 </form>
 

@@ -3,7 +3,6 @@ package edu.szymon.controller;
 import edu.szymon.buisnesslogic.PriceCalculator;
 import edu.szymon.model.Product;
 
-import javax.print.DocFlavor;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +15,10 @@ import java.util.List;
 @WebServlet("/buy")
 public class ServletShop extends HttpServlet {
 
-    PriceCalculator priceCalculator = new PriceCalculator();
-    List<Product> products;
-    double mean;
-    double sum;
+    private PriceCalculator priceCalculator = new PriceCalculator();
+    private List<Product> products;
+    private double mean;
+    private double sum;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -31,10 +30,10 @@ public class ServletShop extends HttpServlet {
         String product3 = request.getParameter("Product3");
         String product4 = request.getParameter("Product4");
 
-        String price1 = request.getParameter("cena1");
-        String price2 = request.getParameter("cena2");
-        String price3 = request.getParameter("cena3");
-        String price4 = request.getParameter("cena4");
+        String price1 = request.getParameter("price1");
+        String price2 = request.getParameter("price2");
+        String price3 = request.getParameter("price3");
+        String price4 = request.getParameter("price4");
 
         String[] prices = {price1, price2, price3, price4};
         String[] parameters = {product1, product2, product3, product4};
